@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@500&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    background: #f2f2f2;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.product {
+    width: 70%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(auto-fill, 230px);
+    grid-gap: 20px;
+    overflow: scroll;
+}
+.list {
+    width: 27%;
+}
+.product-items {
+    width: 100%;
+    min-height: 230px;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.2);
+}
+.product-items img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+.product-info {
+    padding: 10px;
+}
+.list-box {
+    max-height: 80%;
+    overflow: scroll;
+}
+.list-items {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.list-summary p {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.list-control {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn {
+    width: 48%;
+    cursor: pointer;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+.btn-danger {
+    background: #e74c3c;
+    color: #fff;
+}
+.btn-success {
+    background: #1abc9c;
+    color: #fff;
+}

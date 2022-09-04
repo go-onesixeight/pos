@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <title>Slip</title>
+  </head>
+
+  <body>
+    <div style="width: 100%; margin: 0 auto">
+      <h2 style="text-align: center">ร้านอาหาร</h2>
+      <div id="list" style="font-size: 0.8rem">
+        <div class="list-items">
+          <p>[x2] name</p>
+          <p>20 THB</p>
+        </div>
+        <div class="list-items">
+          <p>[x2] name</p>
+          <p>20 THB</p>
+        </div>
+        <div class="list-items">
+          <p>[x2] name</p>
+          <p>20 THB</p>
+        </div>
+        <div class="list-items list-summary">
+          <p>200 THB</p>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(() => {
+        let list = JSON.parse(localStorage.menulist);
+        console.log("slip list :", list.length);
+
+        var html = "";
+        var sumprice = 0;
+        for (let i = 0; i < list.length; i++) {
+          sumprice += Number(list[i].price) * Number(list[i].count);
+          html += `
+          <div class="list-items">
+            <p>[x${list[i].count}] ${list[i].name}</p>
+            <p>${numberWithCommas(list[i].price * list[i].count)} THB</p>
+          </div>
+          `;
+        }
+
+        html += `
+        <div class="list-items list-summary">
+            <p>รวมราคา</p>
+            <p>${numberWithCommas(sumprice)} THB</p>
+        </div>
+        `;
+
+        $("#list")
+          .html(html)
+          .promise()
+          .done(() => {
+            window.print();
+          });
+      });
+
+      const numberWithCommas = (x) => {
+        x = x.toString();
+        var pattern = /(-?\d+)(\d{3})/;
+        while (pattern.test(x)) x = x.replace(pattern, "$1,$2");
+        return x;
+      };
+    </script>
+  </body>
+</html>
